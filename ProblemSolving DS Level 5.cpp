@@ -1,27 +1,64 @@
 #include <iostream>
 #include "clsDoubleLinkedList.h"
+#include "clsMyQueue.h"
+#include "clsMyStack.h"
 using namespace std;
 
 int main()
 {
+    clsMyStack <int> MyStack;
 
-    clsDoubleLinkedList <int> MydblLinkedList;
+    MyStack.Push(10);
+    MyStack.Push(20);
+    MyStack.Push(30);
+    MyStack.Push(40);
+    MyStack.Push(50);
 
-    MydblLinkedList.InsertAtBeginning(5);
-    MydblLinkedList.InsertAtBeginning(4);
-    MydblLinkedList.InsertAtBeginning(3);
-    MydblLinkedList.InsertAtBeginning(2);
-    MydblLinkedList.InsertAtBeginning(1);
 
-    cout << "\nLinked List Contenet:\n";
-    MydblLinkedList.PrintList();
+    cout << "\nStack: \n";
+    MyStack.Print();
 
-    MydblLinkedList.Reverse();
+    cout << "\nStack Size: " << MyStack.Size();
+    cout << "\nStack Top: " << MyStack.Top();
+    cout << "\nStack Bottom: " << MyStack.Bottom();
 
-    cout << "\nLinked List Contenet after reverse:\n";
-    MydblLinkedList.PrintList();
-    clsDoubleLinkedList <int> ::Node* node;
-    node = MydblLinkedList.GetNode(3);
-    cout << "\nNode Value is: " << node->value;
+    MyStack.Pop();
+
+    cout << "\n\nStack after pop() : \n";
+    MyStack.Print();
+
+    //Extension #1
+    cout << "\n\n Item(2) : " << MyStack.GetItem(2);
+
+    //Extension #2
+    MyStack.Reverse();
+    cout << "\n\nStack after reverse() : \n";
+    MyStack.Print();
+
+    //Extension #3
+    MyStack.UpdateItem(2, 600);
+    cout << "\n\nStack after updating Item(2) to 600 : \n";
+    MyStack.Print();
+
+    //Extension #4
+    MyStack.InsertAfter(2, 800);
+    cout << "\n\nStack after Inserting 800 after Item(2) : \n";
+    MyStack.Print();
+
+
+    //Extension #5
+    MyStack.InsertAtFront(1000);
+    cout << "\n\nStack after Inserting 1000 at top: \n";
+    MyStack.Print();
+
+    //Extension #6
+    MyStack.InsertAtBack(2000);
+    cout << "\n\nStack after Inserting 2000 at bottom: \n";
+    MyStack.Print();
+
+    //Extension #7
+    MyStack.Clear();
+    cout << "\n\nStack after Clear(): \n";
+    MyStack.Print();
     system("pause>0");
 }

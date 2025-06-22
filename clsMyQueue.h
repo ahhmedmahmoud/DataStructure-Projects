@@ -9,44 +9,56 @@ protected:
 	clsDoubleLinkedList <T> _MyList;
 
 public:
-
-	void push(T Item)
-	{
-		_MyList.InsertAtEnd(Item);
+	// Last In First Out (LIFO) operations
+	void Push(T Item) {
+		return _MyList.InsertAtEnd(Item);
 	}
 
-
-	void pop()
-	{
-		_MyList.DeleteFirstNode();
+	void Pop() {
+		return _MyList.DeleteFirstNode();
 	}
 
-	void Print()
-	{
-		_MyList.PrintList();
+	void Print() {
+		return _MyList.PrintList();
 	}
 
-	int Size()
-	{
-		return _MyList.Size();
-	}
-
-	bool IsEmpty()
-	{
+	bool IsEmpty() {
 		return _MyList.IsEmpty();
 	}
+	void Clear() {
+		return _MyList.Clear();
+	}
 
-	T front()
-	{
+	int Size() {
+		return _MyList.Size();
+	}
+	T Front() {
 		return _MyList.GetItem(0);
 	}
-
-	T back()
-	{
-		return _MyList.GetItem(Size() - 1);
+	T Back() {
+		return _MyList.GetItem(_MyList.Size() - 1);
 	}
 
+	void Reverse() {
+		return _MyList.Reverse();
+	}
 
+	T GetItem(int Index) {
+		return _MyList.GetItem(Index);
+	}
 
+	int UpdateItem(int Index , T newValue) {
+		return _MyList.UpdateItem(Index, newValue);
+	}
+
+	int InsertAfter(int Index, T newValue) {
+		return _MyList.InsertAfter(Index, newValue);
+	}
+	void InsertAtFront(T Value) {
+		return _MyList.InsertAtBeginning(Value);
+	}
+	void InsertAtBack(T Value) {
+		return _MyList.InsertAtEnd(Value);
+	}
 };
 

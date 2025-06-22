@@ -3,14 +3,11 @@
 #include <iostream>
 using namespace std;
 
-
 template <class T>
 class clsDoubleLinkedList
 {
-
 protected:
     int _Size = 0;
-
 public:
 
     class Node
@@ -23,7 +20,6 @@ public:
     };
 
     Node* head = NULL;
-
     void InsertAtBeginning(T value)
     {
 
@@ -38,30 +34,25 @@ public:
         newNode->value = value;
         newNode->next = head;
         newNode->prev = NULL;
-
         if (head != NULL) {
             head->prev = newNode;
         }
         head = newNode;
-        _Size++;
-
+		_Size++;
     }
-
-    // Print the linked list
-    void PrintList()
-
-    {
+    void PrintList() {
         Node* Current = head;
-
-        while (Current != NULL) {
-            cout << Current->value << " ";
-            Current = Current->next;
+        if (head == NULL) {
+			cout << "List is empty\n";
         }
-        cout << "\n";
-        delete Current;
-
+        else {
+            while (Current != NULL) {
+                cout << Current->value << "\t";
+                Current = Current->next;
+            }
+        }
+		delete Current;
     }
-
     Node* Find(T Value)
     {
         Node* Current = head;
@@ -90,14 +81,12 @@ public:
         Node* newNode = new Node();
         newNode->value = value;
         newNode->next = current->next;
-        newNode->prev = current;
-
+        newNode ->prev = current;
         if (current->next != NULL) {
-            current->next->prev = newNode;
+			current->next->prev = newNode;
         }
         current->next = newNode;
         _Size++;
-
     }
 
     void InsertAtEnd(T value) {
@@ -126,7 +115,6 @@ public:
             newNode->prev = current;
         }
         _Size++;
-
     }
 
     void DeleteNode(Node*& NodeToDelete) {
@@ -140,15 +128,14 @@ public:
             return;
         }
         if (head == NodeToDelete) {
-            head = NodeToDelete->next;
+			head = NodeToDelete->next;
         }
         if (NodeToDelete->next != NULL) {
             NodeToDelete->next->prev = NodeToDelete->prev;
         }
-        if (NodeToDelete->prev != NULL) {
-            NodeToDelete->prev->next = NodeToDelete->next;
-        }
-        delete NodeToDelete;
+		if (NodeToDelete->prev != NULL) {
+			NodeToDelete->prev->next = NodeToDelete->next;
+		}
 
         _Size--;
     }
@@ -217,34 +204,29 @@ public:
 
     }
 
-    void Clear()
-    {
-        while (_Size > 0)
-        {
+    void Clear() {
+        while (Size() > 0) {
             DeleteFirstNode();
         }
     }
 
-
-    void  Reverse()
+    void Reverse()
     {
-        Node* current = head;
-        Node* temp = nullptr;
-        while (current != nullptr) {
-            temp = current->prev;
-            current->prev = current->next;
-            current->next = temp;
-            current = current->prev;
+        Node* Current = head;
+        Node* Temp = nullptr;
+        while (Current != nullptr) {
+            Temp = Current->prev;
+            Current->prev = Current->next;
+            Current->next = Temp;
+            Current = Current->prev;
         }
-
-        if (temp != nullptr) {
-            head = temp->prev;
+        if (Temp != nullptr) {
+			head = Temp->prev;
         }
     }
 
     Node* GetNode(int Index)
     {
-
         int Counter = 0;
 
         if (Index > _Size - 1 || Index < 0)
@@ -258,7 +240,6 @@ public:
 
             Current = Current->next;
             Counter++;
-
         }
 
         return Current;
